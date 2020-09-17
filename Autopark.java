@@ -21,6 +21,9 @@ public class Autopark
         this.kunden = new ArrayList<Kunde>();
         this.vermietungen = new ArrayList<Vermietung>();
         
+        erstelleTestAuto();
+        erstelleTestKunde();
+        erstelleTestVermietung();
         showMenu();
     }
     
@@ -32,6 +35,7 @@ public class Autopark
         System.out.println("--- 3. Auto erstellen ---");
         System.out.println("--- 4. Kunde erstellen ---");
         System.out.println("--- 5. Starte Vermietung ---");
+        System.out.println("--- 6. Vermietungen anzeigen ---");
         System.out.println("--- 99. Beende das Programm ---");
         System.out.println("");
         
@@ -78,6 +82,11 @@ public class Autopark
             starteVermietungInput();
             showMenu();
         }
+        else if(input.equals("6"))
+        {
+            alleVermietungenAnzeigen();
+            showMenu();
+        }
         else if(input.equals("99"))
         {
             System.out.println("Programm wird beendet...");
@@ -121,6 +130,19 @@ public class Autopark
         for(Kunde kunde : this.getKunden())
         {
             System.out.println("Vorname: " + kunde.getVorname() + " / Nachname: " + kunde.getNachname() + " / Darf leihen: " + kunde.getDarfleihen());
+            System.out.println("");
+        }
+    }
+    
+    public void alleVermietungenAnzeigen()
+    {
+        for(Vermietung vermietung : this.getVermietungen())
+        {
+            Kunde kunde = getKunden().get(0);
+            Auto auto = getAutos().get(0);
+            System.out.println("Kunde: " + kunde.getVorname() + " " + kunde.getNachname());
+            System.out.println("Auto: " + auto.getKennzeichen() + " / Typ: " + auto.getTyp() + " / Preis: " + auto.getPreis());
+            System.out.println("Vermietung: " + vermietung.getStart() + " bis " + vermietung.getEnde());
             System.out.println("");
         }
     }
@@ -252,6 +274,35 @@ public class Autopark
         neueVermietung.getAuto().setVerliehen(true);
         this.vermietungen.add(neueVermietung);
         neueVermietung.printVermietung();
+    }
+    
+    //diese Methode soll den ensprechenden Index zurükgeben, welcher zu dem Auto gehört, welches in der Variable kennezeichen den Input hat
+    public void chooseAuto()
+    {
+        for(Auto auto : this.getAutos())
+        {
+            if(getAutos().getKennzeichen().equals(newInput()))
+            {
+                int autoIndex = getAutos();
+                return autoIndex;
+            }
+        }
+    }
+    
+    //Test Objekte erstellen
+    public void erstelleTestAuto()
+    {
+        getAutos().add(new Auto("TestCarTyp", "XX XX XXXX", 00, false));
+    }
+    
+    public void erstelleTestKunde()
+    {
+        getKunden().add(new Kunde("TestVorname", "TestNachname", true));
+    }
+    
+    public void erstelleTestVermietung()
+    {
+        getVermietungen().add(new Vermietung("08.09.2020", "09.09.2020", getAutos().get(0), getKunden().get(0)));
     }
     
     //add Methoden
