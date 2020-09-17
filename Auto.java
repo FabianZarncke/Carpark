@@ -21,6 +21,7 @@ public class Auto
     public void printAuto()
     {
         System.out.println("Kennzeichen: " + getKennzeichen() + " / Typ: " + getTyp() + " / Preis: " + getPreis() + "€ pro Tag / Ist verliehen: " + getVerliehen());
+        System.out.println("");
     }
     
     //SETTER

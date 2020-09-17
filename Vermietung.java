@@ -21,6 +21,7 @@ public class Vermietung
    public void printVermietung()    
    {
        System.out.println("Start: " + getStart() + " / Ende: " + getEnde() + " / Auto: " + auto.getKennzeichen() + " / Kunde: " + kunde.getVorname() + " " + kunde.getNachname());
+       System.out.println("");
    }
     
    //SETTER
