@@ -3,22 +3,24 @@ public class Kunde
     //Instanzvariablen
     private String vorname;
     private String nachname;
+    private String kundenid;
     private boolean darfleihen;
     
     //Konstruktor
     
-    public Kunde(String vorname, String nachname, boolean darfleihen)
+    public Kunde(String vorname, String nachname, String kundenid, boolean darfleihen)
     {
         this.vorname = vorname;
         this.nachname = nachname;
         this.darfleihen = darfleihen;
+        this.kundenid = kundenid;
     }
     
     //Print Kunde
     
     public void printKunde()
     {
-        System.out.println("Vorname: " + getVorname() + " / Nachname: " + getNachname() + " / Darf leihen: " + getDarfleihen());
+        System.out.println("Vorname: " + getVorname() + " / Nachname: " + getNachname() + " / Darf leihen: " + getDarfleihen() + "/ Kunden-ID: " + getKundenID());
         System.out.println("");
     }
     
@@ -32,6 +34,11 @@ public class Kunde
     public void setNachname(String nachname)
     {
         this.nachname = nachname;
+    }
+    
+    public void setKundenID(String kundenid)
+    {
+        this.kundenid = kundenid;
     }
     
     public void setDarfleihen(boolean darfleihen)
@@ -49,6 +56,11 @@ public class Kunde
     public String getNachname()
     {
         return nachname;
+    }
+    
+    public String getKundenID()
+    {
+        return kundenid;
     }
     
     public boolean getDarfleihen()

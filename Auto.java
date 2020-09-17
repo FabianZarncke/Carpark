@@ -36,7 +36,7 @@ public class Auto
         this.kennzeichen = kennzeichen;
     }
     
-    public void setpreis(int preis)
+    public void setPreis(int preis)
     {
         this.preis = preis;
     }
