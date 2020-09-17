@@ -19,7 +19,6 @@ public class Kunde
     public void printKunde()
     {
         System.out.println("Vorname: " + getVorname() + " / Nachname: " + getNachname() + " / Darf leihen: " + getDarfleihen());
-        System.out.println("");
     }
     
     //SETTER

@@ -1,4 +1,3 @@
-
 import java.util.*;
 import java.io.*;
 
@@ -33,7 +32,6 @@ public class Autopark
         System.out.println("--- 4. Kunde erstellen ---");
         System.out.println("--- 5. Starte Vermietung ---");
         System.out.println("--- 99. Beende das Programm ---");
-        System.out.println("");
         
         waitForInput();
     }
@@ -48,7 +46,6 @@ public class Autopark
         }
         catch(IOException err){
             System.out.println("Fehler bei der Eingabe!");
-            System.out.println("");
         }
         
         //Eingaben prüfen
@@ -81,12 +78,10 @@ public class Autopark
         else if(input.equals("99"))
         {
             System.out.println("Programm wird beendet...");
-            System.out.println("");
         }
         else
         {
             System.out.println("Keine gültige Eingabe");
-            System.out.println("");
             showMenu();
         }
     }
@@ -102,7 +97,6 @@ public class Autopark
         catch(IOException err)
         {
             System.out.println("Fehler bei der Eingabe!");
-            System.out.println("");
         }
         return input;
     }
@@ -133,32 +127,16 @@ public class Autopark
         System.out.println("Auto Kennzeichen:");
         String kennzeichen = newInput();
         
-        int preis = preisInput();
+        System.out.print("Preis ");
+        String spreis = newInput();
+            
+        int ipreis = Integer.parseInt(spreis);
+        
+        int preis = ipreis;
         
         boolean verliehen = false;
         
         autoErstellen(typ, kennzeichen, preis, verliehen);
-    }
-    
-    public int preisInput()
-    {
-        try{
-            System.out.print("Preis: ");
-            String spreis = newInput();
-                
-            int ipreis = Integer.parseInt(spreis);
-            
-            int preis = ipreis;
-            
-            return preis;
-        }
-        catch(NumberFormatException err)
-        {
-            System.out.println("Fehler bei der Eingabe...");
-            System.out.println("");
-            int preis = preisInput();
-            return preis;
-        }
     }
     
     public void autoErstellen(String typ, String kennzeichen, int preis, boolean verliehen)
@@ -175,46 +153,15 @@ public class Autopark
         System.out.println("Nachname:");
         String nachname = newInput();
         
-        boolean darfleihen = darfleihenInput();
+        System.out.print("Darf leihen:");
+        String sdarfleihen = newInput();
+            
+        boolean bdarfleihen = Boolean.parseBoolean(sdarfleihen);
+        
+        boolean darfleihen = bdarfleihen;
         
         
         kundeErstellen(vorname, nachname, darfleihen);
-    }
-    
-    public boolean darfleihenInput()
-    {
-        try{
-            System.out.print("Darf leihen: ");
-            String sdarfleihen = newInput();
-            if(sdarfleihen.equals("yes") || sdarfleihen.equals("true"))
-            {
-                sdarfleihen = "true";
-            }
-            else if(sdarfleihen.equals("no") || sdarfleihen.equals("false"))
-            {
-                sdarfleihen = "false";
-            }
-            else
-            {
-                System.out.println("Fehler bei der Eingabe...");
-                System.out.println("");
-                boolean darfleihen = darfleihenInput();
-                return darfleihen;
-            }
-                
-            boolean bdarfleihen = Boolean.parseBoolean(sdarfleihen);
-            
-            boolean darfleihen = bdarfleihen;
-            
-            return darfleihen;
-        }
-        catch(NumberFormatException err)
-        {
-            System.out.println("Fehler bei der Eingabe...");
-            System.out.println("");
-            boolean darfleihen = darfleihenInput();
-            return darfleihen;
-        }
     }
     
     public void kundeErstellen(String vorname, String nachname, boolean darfleihen)
@@ -251,7 +198,7 @@ public class Autopark
         Vermietung neueVermietung = new Vermietung(start, ende, auto, kunde);
         neueVermietung.getAuto().setVerliehen(true);
         this.vermietungen.add(neueVermietung);
-        neueVermietung.printVermietung();
+        vermietung.printVermietung();
     }
     
     //add Methoden
